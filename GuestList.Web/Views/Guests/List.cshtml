@@ -1,0 +1,48 @@
+﻿@using GuestList.Web.Controllers
+@{
+    ViewBag.Title = "Guest List";
+    var userId = ViewBag.UserId;
+}
+
+<h1>Lista Gości</h1>
+@{
+    //Lista gości
+
+    //testy
+    //<p>Twoje ID użytkownika to: @userId</p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a style="text-decoration: none;" asp-action="List" asp-route-sortOrder="@ViewBag.NameSortParm">Imię i Nazwisko</a>
+            </th>
+            <th>
+                <a style ="text-decoration: none;" asp-action="List" asp-route-sortOrder="@ViewBag.PhoneSortParm">Numer telefonu</a>
+            </th>
+            <th>
+                <a style="text-decoration: none;" asp-action="List" asp-route-sortOrder="@ViewBag.ConfirmedSortParm">Potwierdzono przyjście</a>
+            </th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var guest in Model)
+        {
+            <tr>
+                <td>@guest.Name</td>
+                <td>@guest.PhoneNumber</td>
+                <td>@(guest.Confirmed ? "Tak" : "Nie")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@guest.Id" class="btn btn-primary">Edytuj</a>
+                    <form asp-action="Delete" method="post" style="display:inline;" onsubmit="return confirm('Czy na pewno chcesz usunąć?');">
+                        <input type="hidden" name="id" value="@guest.Id" />
+                        <button type="submit" class="btn btn-danger">Usuń</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add" class="btn btn-primary">Dodaj nowego gościa</a>

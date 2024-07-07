@@ -1,0 +1,25 @@
+﻿@model GuestList.Web.Models.Entities.Guest
+@{
+    //Formularz dodawania gości
+    ViewBag.Title = "Create Guest";
+}
+<div style="width: 300px; margin:0 auto;">
+<h2>Dodaj Gościa</h2>
+
+<form asp-action="Add" method="post">
+    <div class="mt-3">
+        <label class ="form-label">Imię i Nazwisko</label>
+        <input type="text" name="Name" class="form-control" />
+    </div>
+    <div class="mt-3">
+        <label class="form-label">Numer telefonu</label>
+        <input type="text" name="PhoneNumber" class="form-control" />
+    </div>
+    <div class="mt-3">
+            <label class="form-check-label"> Potwierdzono przyjście</label>
+            <input type="checkbox" class="form-control-input" asp-for="Confirmed" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>
+</div>

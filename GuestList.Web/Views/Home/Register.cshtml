@@ -1,0 +1,31 @@
+﻿@using GuestList.Web.Models.Entities
+
+@model User
+@{
+    //Forumlarz rejestracji
+    ViewBag.Title = "Register";
+}
+<div style="width: 300px; margin:0 auto;">
+<h2>Rejestracja</h2>
+</div>
+
+<div style="width: 300px; margin:0 auto;">
+<form asp-action="Register" method="post">
+    <div>
+        <label class="form-label">Login</label>
+        <input type="text" name="login" class="form-control" />
+    </div>
+    <div>
+        <label class="form-label">Hasło</label>
+        <input type="password" name="password" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Utwórz konto</button>
+</form>
+    <p>Posiadasz konto, <a asp-action="Login">zaloguj się</a>.</p>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div style="color: red;" class="text-danger">@ViewBag.ErrorMessage</div>
+}
+</div>

@@ -1,0 +1,31 @@
+﻿@model GuestList.Web.Models.Entities.Guest
+
+@{
+    //Formularz edycji gości
+    ViewBag.Title = "Edit Guest";
+}
+<div style="width: 300px; margin:0 auto;">
+<h2>Edytuj Gościa</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="UserId" value="@Model.UserId" />
+    <div class="mt-3">
+        <label class="form-label">Imię i Nazwisko</label>
+        <input type="text" name="Name" value="@Model.Name" class="form-control" />
+    </div>
+    <div class="mt-3">
+        <label class="form-label">Numer telefonu</label>
+        <input type="text" name="PhoneNumber" value="@Model.PhoneNumber" class="form-control" />
+    </div>
+    <div class="mt-3">
+        <label class="form-check-label"> Potwierdzono przyjście</label>
+        <input type="checkbox" class="form-control-input" asp-for="Confirmed" />
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>
+<br />
+<form asp-action="Cancel" method="post">
+    <button type="submit" class="btn btn-danger">Anuluj</button>
+</form>
+</div>

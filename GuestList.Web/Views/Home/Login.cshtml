@@ -1,0 +1,36 @@
+﻿@{
+    //Forumlarz logowania
+    ViewBag.Title = "Login";
+}
+<div style="width: 300px; margin:0 auto;">
+<h2>Zaloguj się</h2>
+</div>
+
+<div style="width: 300px; margin:0 auto;">
+    @if (ViewBag.RegisterMessage != null)
+    {
+        <div class="alert alert-success">
+            @ViewBag.RegisterMessage
+        </div>
+    }
+    <form asp-action="Login" method="post">
+        <div>
+            <label class="form-label">Login</label>
+            <input type="text" name="login" class="form-control" />
+        </div>
+        <br />
+        <div>
+            <label class="form-label">Hasło</label>
+            <input type="password" name="password" class="form-control" />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Zaloguj</button>
+    </form>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div style="color: red;">@ViewBag.ErrorMessage</div>
+    }
+    <br />
+    <p>Nie posiadasz konta, <a asp-action="Register">zarejestruj się</a>.</p>
+</div>
